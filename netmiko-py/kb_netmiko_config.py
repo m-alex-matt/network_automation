@@ -6,7 +6,7 @@ my_device = {
     'host': '192.168.250.254',
     'username': 'user',
     'password': getpass(),
-    'secret': 'password',
+    'secret': getpass(),
     'device_type': 'cisco_ios'
 }
 
