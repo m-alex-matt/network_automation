@@ -3,20 +3,20 @@ from netmiko import Netmiko
 import datetime
 
 CUR_TIME = str(datetime.datetime.today().isoformat()[:-7])
-CUR_DIR = '/home/michael/py-scripts/network-py/network_automation/netmiko-py'
+CUR_DIR = '/home/michael/Desktop/config/base_config'
 
 def backup(net_conn, hostn):
     net_conn.enable()
     command = "show running-config"
     output = net_conn.send_command(command)
     try:
-        with open(f'{CUR_DIR}/dev_conf/{hostn}_conf/{hostn}.config', mode='x') as f:
+        with open(f'{CUR_DIR}/{hostn}/{hostn}.config', mode='x') as f:
             f.write(output)
     except FileExistsError:
-        with open(f'{CUR_DIR}/dev_conf/{hostn}_conf/{hostn}.config', mode='r') as f:
-            with open(f'{CUR_DIR}/dev_conf/{hostn}_conf/{hostn}.config_{CUR_TIME}', mode='w') as f_old:
+        with open(f'{CUR_DIR}/{hostn}/{hostn}.config', mode='r') as f:
+            with open(f'{CUR_DIR}/{hostn}/{hostn}.config_{CUR_TIME}', mode='w') as f_old:
                 f_old.write(f.read())
-        with open(f'{CUR_DIR}/dev_conf/{hostn}_conf/{hostn}.config', mode='w') as f:
+        with open(f'{CUR_DIR}/{hostn}/{hostn}.config', mode='w') as f:
             f.write(output)
 
 def main():
