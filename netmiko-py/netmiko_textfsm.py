@@ -12,5 +12,5 @@ my_device = {
 net_conn = Netmiko(**my_device)
 #output = net_conn.find_prompt()
 net_conn.enable()
-output = net_conn.send_command("show run")
+output = net_conn.send_command("show ip arp", use_textfsm=True)
 print(output)

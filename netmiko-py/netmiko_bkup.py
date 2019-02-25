@@ -14,7 +14,8 @@ def backup(net_conn, hostn):
             f.write(output)
     except FileExistsError:
         with open(f'{CUR_DIR}/{hostn}/{hostn}.config', mode='r') as f:
-            with open(f'{CUR_DIR}/{hostn}/{hostn}.config_{CUR_TIME}', mode='w') as f_old:
+            with open(f'{CUR_DIR}/{hostn}/{hostn}.config_{CUR_TIME}', 
+                    mode='w') as f_old:
                 f_old.write(f.read())
         with open(f'{CUR_DIR}/{hostn}/{hostn}.config', mode='w') as f:
             f.write(output)
